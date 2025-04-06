@@ -8,9 +8,9 @@ int port=8000;
 int buf=1024;
 
 int main(){
-    int sock;
+    int sock;int j=0;
     struct sockaddr_in server_addr,client_addr;
-    char buffer[buf];
+    char buffer[buf],buffer2[buf];
     socklen_t addr_size;
 
     sock=socket(AF_INET,SOCK_DGRAM,0);if(sock<0)printf("Could not connect Socket.\n");else{printf("Connected socket\n");}
@@ -23,4 +23,9 @@ int main(){
 
     recvfrom(sock,buffer,buf,0,(struct sockaddr *)&client_addr,&addr_size);
     printf("Buffer :%s",buffer);
+    for(int i=strlen(buffer)-1;i>=0;i--){
+        buffer2[j]=buffer[i];
+        j++;
+    }buffer2[j]='\0';
+    sendto(sock,buffer2,strlen(buffer2),0,(struct sockaddr *)&client_addr,sizeof(client_addr));
 }

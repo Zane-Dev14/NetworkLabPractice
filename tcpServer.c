@@ -13,6 +13,7 @@ int main(){
     socklen_t addr_size;
     char buffer[buf];
     char buffer2[buf];
+
     sock=socket(AF_INET,SOCK_STREAM,0);
     if(sock<0){printf("No socket");}else{printf("Sock");}
     server_addr.sin_family=AF_INET;
@@ -25,7 +26,7 @@ int main(){
     listen(sock,5);
     client_sock=accept(sock,(struct sockaddr *)&client_addr,&addr_size);
     read(client_sock,buffer,buf);
-    printf("Buffer: %s. Will reverse. \n",buffer);
+    
     int j=0;
     for(int i=strlen(buffer)-1;i>=  0;i--){
         buffer2[j]=buffer[i];

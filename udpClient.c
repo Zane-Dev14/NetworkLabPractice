@@ -20,5 +20,7 @@ int main(){
     inet_pton(AF_INET,"127.0.0.1",&server_addr.sin_addr);
 
     sendto(sock,buffer,buf,0,(struct sockaddr *)&server_addr,sizeof(server_addr));
-
+    buffer[buf]='\0';
+    recvfrom(sock,buffer,buf,0,NULL,NULL);
+    printf("From server: %s",buffer);
 }

@@ -17,6 +17,7 @@ int main(){
     scanf("%s",buffer);
     sock=socket(AF_INET,SOCK_STREAM,0);
     if (sock<0)printf("Failed to connect");
+    
     server_addr.sin_port=htons(8000);
     server_addr.sin_family=AF_INET;
     inet_pton(AF_INET,"127.0.0.1",&server_addr.sin_addr);
