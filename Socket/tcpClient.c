@@ -9,9 +9,8 @@ int buf=1024;
 
 int main(){
     int sock;
-    struct sockaddr_in server_addr,client_addr;
-    char buffer[buf];
-    socklen_t addr_size;
+    struct sockaddr_in server_addr;
+    char buffer[buf],buffer2[buf];
 
     printf("Enter message to send: \n");
     scanf("%s",buffer);
@@ -24,8 +23,7 @@ int main(){
    
     connect(sock,(struct sockaddr *)&server_addr,sizeof(server_addr));
     send(sock,buffer,buf,0);
-    buffer[buf]='\0';
-    recv(sock,buffer,buf,0);
+    recv(sock,buffer2,buf,0);
     printf("From server: %s",buffer);
     
 }
